@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d455a409c4b7274e6206725eb828590a",
+    "content-hash": "1e724623483f73e8842f88c4a4204de1",
     "packages": [
         {
             "name": "azjezz/psl",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/azjezz/psl.git",
-                "reference": "08a67302236053c0eea7cba5e7e83ae1ae02cd36"
+                "reference": "9fdb771b1d04e57b7ad82fe01a367a37075e47d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/azjezz/psl/zipball/08a67302236053c0eea7cba5e7e83ae1ae02cd36",
-                "reference": "08a67302236053c0eea7cba5e7e83ae1ae02cd36",
+                "url": "https://api.github.com/repos/azjezz/psl/zipball/9fdb771b1d04e57b7ad82fe01a367a37075e47d2",
+                "reference": "9fdb771b1d04e57b7ad82fe01a367a37075e47d2",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,7 @@
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "ext-sodium": "*",
-                "php": "^8.0"
+                "php": "~8.0.0 || ~8.1.0"
             },
             "suggest": {
                 "php-standard-library/psalm-plugin": "Psalm integration"
@@ -62,7 +62,7 @@
             "description": "PHP Standard Library",
             "support": {
                 "issues": "https://github.com/azjezz/psl/issues",
-                "source": "https://github.com/azjezz/psl/tree/1.9.0"
+                "source": "https://github.com/azjezz/psl/tree/1.9.1"
             },
             "funding": [
                 {
@@ -70,7 +70,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-10-18T19:30:34+00:00"
+            "time": "2021-11-06T05:09:56+00:00"
         },
         {
             "name": "beberlei/assert",
