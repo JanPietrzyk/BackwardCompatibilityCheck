@@ -11,6 +11,7 @@ use Psl\Str;
 use Psl\Type;
 use Roave\BackwardCompatibility\Changes;
 use Roave\BackwardCompatibility\CompareApi;
+use Roave\BackwardCompatibility\DefaultExcludeList;
 use Roave\BackwardCompatibility\Factory\ComposerInstallationReflectorFactory;
 use Roave\BackwardCompatibility\Formatter\MarkdownPipedToSymfonyConsoleFormatter;
 use Roave\BackwardCompatibility\Formatter\SymfonyConsoleTextFormatter;
@@ -102,6 +103,12 @@ final class AssertBackwardsCompatible extends Command
                 InputOption::VALUE_NONE,
                 'Whether to also install "require-dev" dependencies too'
             )
+            ->addOption(
+                'exclude-list',
+                null,
+                InputOption::VALUE_NONE,
+                'a exclude list'
+            )
             ->addUsage(
                 <<<'USAGE'
 
@@ -171,7 +178,8 @@ USAGE
                 ($this->makeComposerInstallationReflector)(
                     $toPath->__toString(),
                     ($this->locateDependencies)($toPath->__toString(), $includeDevelopmentDependencies)
-                )
+                ),
+                DefaultExcludeList::create()
             );
 
             (new SymfonyConsoleTextFormatter($stdErr))->write($changes);

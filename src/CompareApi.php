@@ -18,6 +18,7 @@ interface CompareApi
     public function __invoke(
         ClassReflector $definedSymbols,
         ClassReflector $pastSourcesWithDependencies,
-        ClassReflector $newSourcesWithDependencies
+        ClassReflector $newSourcesWithDependencies,
+        ExcludeList $excludeList
     ): Changes;
 }

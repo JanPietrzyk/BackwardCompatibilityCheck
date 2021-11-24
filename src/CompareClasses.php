@@ -35,13 +35,18 @@ final class CompareClasses implements CompareApi
     public function __invoke(
         ClassReflector $definedSymbols,
         ClassReflector $pastSourcesWithDependencies,
-        ClassReflector $newSourcesWithDependencies
+        ClassReflector $newSourcesWithDependencies,
+        ExcludeList $excludeList
     ): Changes {
         $definedApiClassNames = Dict\map(
             Dict\filter(
                 $definedSymbols->getAllClasses(),
-                function (ReflectionClass $class): bool {
-                    return ! ($class->isAnonymous() || $this->isInternalDocComment($class->getDocComment()));
+                function (ReflectionClass $class) use ($excludeList): bool {
+                    return ! (
+                        $class->isAnonymous()
+                        || $this->isInternalDocComment($class->getDocComment())
+                        || $excludeList->isExcluded($class->getFileName())
+                    );
                 }
             ),
             static function (ReflectionClass $class): string {

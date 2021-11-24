@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Roave\BackwardCompatibility\Change;
 use Roave\BackwardCompatibility\Changes;
 use Roave\BackwardCompatibility\CompareClasses;
+use Roave\BackwardCompatibility\DefaultExcludeList;
 use Roave\BackwardCompatibility\DetectChanges\BCBreak\ClassBased\ClassBased;
 use Roave\BackwardCompatibility\DetectChanges\BCBreak\InterfaceBased\InterfaceBased;
 use Roave\BackwardCompatibility\DetectChanges\BCBreak\TraitBased\TraitBased;
@@ -81,7 +82,8 @@ class A {
     public function aMethod() {}
 }
 PHP
-                )
+                ),
+                DefaultExcludeList::create()
             )
         );
     }
@@ -113,7 +115,8 @@ PHP
 
 class A {}
 PHP
-                )
+                ),
+                DefaultExcludeList::create()
             )
         );
     }
@@ -129,7 +132,8 @@ PHP
             ($this->compareClasses)(
                 (self::$stringReflectorFactory)('<?php interface A {}'),
                 (self::$stringReflectorFactory)('<?php interface A {}'),
-                (self::$stringReflectorFactory)('<?php interface A {}')
+                (self::$stringReflectorFactory)('<?php interface A {}'),
+                DefaultExcludeList::create()
             )
         );
     }
@@ -145,7 +149,8 @@ PHP
             ($this->compareClasses)(
                 (self::$stringReflectorFactory)('<?php trait A {}'),
                 (self::$stringReflectorFactory)('<?php trait A {}'),
-                (self::$stringReflectorFactory)('<?php trait A {}')
+                (self::$stringReflectorFactory)('<?php trait A {}'),
+                DefaultExcludeList::create()
             )
         );
     }
@@ -161,7 +166,8 @@ PHP
             ($this->compareClasses)(
                 (self::$stringReflectorFactory)('<?php $x = new class () {};'),
                 (self::$stringReflectorFactory)('<?php $x = new class () {};'),
-                (self::$stringReflectorFactory)('<?php $x = new class () {};')
+                (self::$stringReflectorFactory)('<?php $x = new class () {};'),
+                DefaultExcludeList::create()
             )
         );
     }
@@ -175,7 +181,8 @@ PHP
             ($this->compareClasses)(
                 (self::$stringReflectorFactory)('<?php '),
                 (self::$stringReflectorFactory)('<?php class A { private function foo() {} }'),
-                (self::$stringReflectorFactory)('<?php ')
+                (self::$stringReflectorFactory)('<?php '),
+                DefaultExcludeList::create()
             )
         );
     }
@@ -201,7 +208,8 @@ trait C {}
 PHP
                 ),
                 (self::$stringReflectorFactory)('<?php '),
-                (self::$stringReflectorFactory)('<?php ')
+                (self::$stringReflectorFactory)('<?php '),
+                DefaultExcludeList::create()
             )
         );
     }
@@ -217,7 +225,8 @@ PHP
             ($this->compareClasses)(
                 (self::$stringReflectorFactory)('<?php class A { private function foo() {} }'),
                 (self::$stringReflectorFactory)('<?php class A { private function foo() {} }'),
-                (self::$stringReflectorFactory)('<?php ')
+                (self::$stringReflectorFactory)('<?php '),
+                DefaultExcludeList::create()
             )
         );
     }
